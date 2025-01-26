@@ -4,8 +4,6 @@ import LampControlRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.android_websocket_challange.model.GetControlListResponse
-import com.example.android_websocket_challange.model.RequestLamp.LampRequest
 import com.example.android_websocket_challange.model.ResponseLamp.LampResponse
 import com.google.gson.Gson
 class LampControlViewModel(private val repository: LampControlRepository) : ViewModel() {

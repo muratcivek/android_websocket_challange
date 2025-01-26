@@ -1,4 +1,4 @@
-package com.example.android_websocket_challange.model
+package com.example.android_websocket_challange.model.ResponseControl
 
 
 data class GetControlListResponse(

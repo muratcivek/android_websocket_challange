@@ -1,9 +1,8 @@
 package com.example.android_websocket_challange.repository
 
 import android.util.Log
-import com.example.android_websocket_challange.model.AuthenticateRequest
-import com.example.android_websocket_challange.model.GetControlListRequest
-import com.example.android_websocket_challange.model.UserCredentials
+import com.example.android_websocket_challange.model.RequestAuthenticate.AuthenticateRequest
+import com.example.android_websocket_challange.model.RequestAuthenticate.UserCredentials
 import com.example.android_websocket_challange.network.WebSocketClient
 import com.google.gson.Gson
 

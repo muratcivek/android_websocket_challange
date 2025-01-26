@@ -3,7 +3,7 @@ package com.example.android_websocket_challange.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.android_websocket_challange.model.GetControlListResponse
+import com.example.android_websocket_challange.model.ResponseControl.GetControlListResponse
 import com.example.android_websocket_challange.repository.ControlListRepository
 import com.google.gson.Gson
 

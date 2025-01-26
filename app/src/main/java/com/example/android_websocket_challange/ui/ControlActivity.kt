@@ -48,8 +48,7 @@ class ControlActivity : AppCompatActivity() {
             ControlListViewModelFactory(repository)
         }
 
-        // Buton Tıklama İşlemi
-        binding.btnFetchControlList.setOnClickListener {
+        binding.LYTLINEARLIGHTING.setOnClickListener {
             viewModel.fetchControlList()
         }
 

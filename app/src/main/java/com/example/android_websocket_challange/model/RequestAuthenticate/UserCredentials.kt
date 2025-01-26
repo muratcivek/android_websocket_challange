@@ -1,4 +1,4 @@
-package com.example.android_websocket_challange.model
+package com.example.android_websocket_challange.model.RequestAuthenticate
 
 data class UserCredentials(
     val username: String,

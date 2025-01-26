@@ -1,9 +1,5 @@
-import android.content.ContentValues
-import android.util.Log
-import com.example.android_websocket_challange.model.GetControlListRequest
 import com.example.android_websocket_challange.model.RequestLamp.LampControlParam
 import com.example.android_websocket_challange.model.RequestLamp.LampRequest
-import com.example.android_websocket_challange.model.ResponseLamp.LampResponse
 import com.example.android_websocket_challange.network.WebSocketClient
 import com.google.gson.Gson
 

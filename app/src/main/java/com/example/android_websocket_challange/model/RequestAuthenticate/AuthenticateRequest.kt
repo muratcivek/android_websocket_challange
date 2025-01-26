@@ -1,4 +1,4 @@
-package com.example.android_websocket_challange.model
+package com.example.android_websocket_challange.model.RequestAuthenticate
 
 data class AuthenticateRequest(
     val is_request: Boolean,

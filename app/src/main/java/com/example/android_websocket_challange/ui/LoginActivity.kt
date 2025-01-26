@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Buton Tıklama İşlemi
-        binding.hesaplarButton.setOnClickListener {
+        binding.BTNACCOUNT.setOnClickListener {
             viewModel.Authenticate()
             Toast.makeText(this, "$", Toast.LENGTH_SHORT).show()
 

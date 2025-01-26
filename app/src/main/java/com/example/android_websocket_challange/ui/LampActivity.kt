@@ -40,7 +40,7 @@ class LampActivity : AppCompatActivity() {
         }
 
         // Buton Tıklama İşlemi
-        binding.lampButton.setOnClickListener {
+        binding.BTNLAMP.setOnClickListener {
             viewModel.sendLampRequest()
             Toast.makeText(this, "$", Toast.LENGTH_SHORT).show()
 
