@@ -16,64 +16,56 @@ import com.example.android_websocket_challange.network.WebSocketClient
 import com.example.android_websocket_challange.repository.ControlListRepository
 import com.example.android_websocket_challange.viewmodel.ControlListViewModel
 import com.example.android_websocket_challange.viewmodel.ControlListViewModelFactory
-
 class ControlActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityControlBinding // View Binding Nesnesi
+
+    private lateinit var binding: ActivityControlBinding
     private lateinit var webSocketClient: WebSocketClient
     private lateinit var repository: ControlListRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Binding Nesnesini Başlat
         binding = ActivityControlBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Edge-to-edge etkinleştir
         enableEdgeToEdge()
 
-        // ViewCompat yerine doğrudan ViewBinding kullanımı
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // WebSocketClient ve Repository başlatma
+        // WebSocket bağlantısını oluştur
         webSocketClient = WebSocketClient("wss://ws.postman-echo.com/raw")
         repository = ControlListRepository(webSocketClient)
 
-        // ViewModel başlatma
+
         val viewModel: ControlListViewModel by viewModels {
             ControlListViewModelFactory(repository)
         }
 
+        // Aydınlatma butonuna tıklama dinleyicisi
         binding.LYTLINEARLIGHTING.setOnClickListener {
+            // Veri çekme işlemi başlatılır
             viewModel.fetchControlList()
         }
 
-        // ViewModel'dan gelen yanıtı gözlemle
+        // Sunucudan gelen başarı durumunda yanıt gözlemleniyor
         viewModel.response.observe(this) { response ->
-            // Yanıtı logla ve kontrol et
+            // Gelen yanıtı kullanıcıya göster
             Toast.makeText(this, "$response", Toast.LENGTH_SHORT).show()
-            val controls = response.params?.get(0)?.data
-            Toast.makeText(this, "$controls", Toast.LENGTH_SHORT).show()
-            if (controls != null && controls.isNotEmpty()) {
-                val firstControlName = controls[0].name
-                Toast.makeText(this, "First Control: $firstControlName", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "No controls available.", Toast.LENGTH_SHORT).show()
-            }
 
+            // Yeni bir aktiviteye geçiş yap
             val intent = Intent(this, LampActivity::class.java)
             startActivity(intent)
-            finish() // Eğer mevcut aktiviteyi kapatmak istiyorsanız
+            finish()
         }
 
+        // Hata durumunda gözlemleme
         viewModel.error.observe(this) { error ->
-            // Hata mesajını logla ve göster
-
-            Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
+            // Hata mesajını kullanıcıya göster
+            Toast.makeText(this, "Hata: $error", Toast.LENGTH_SHORT).show()
         }
     }
 }

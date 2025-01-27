@@ -3,6 +3,7 @@ package com.example.android_websocket_challange.ui
 import LampControlRepository
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -18,49 +19,48 @@ import com.example.android_websocket_challange.viewmodel.ControlListViewModel
 import com.example.android_websocket_challange.viewmodel.ControlListViewModelFactory
 import com.example.android_websocket_challange.viewmodel.LampControlViewModel
 import com.example.android_websocket_challange.viewmodel.LampControlViewModelFactory
-
 class LampActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLampBinding // View Binding Nesnesi
+    private lateinit var binding: ActivityLampBinding
     private lateinit var webSocketClient: WebSocketClient
     private lateinit var repository: LampControlRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Binding Nesnesini Başlat
+
         binding = ActivityLampBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        webSocketClient = WebSocketClient("wss://ws.postman-echo.com/raw")
 
-        // WebSocketClient ve Repository başlatma
-         webSocketClient = WebSocketClient("wss://ws.postman-echo.com/raw")
-         repository = LampControlRepository(webSocketClient)
+        repository = LampControlRepository(webSocketClient)
 
-        // ViewModel başlatma
         val viewModel: LampControlViewModel by viewModels {
             LampControlViewModelFactory(repository)
         }
 
-        // Buton Tıklama İşlemi
+        // Lamba düğmesine tıklanma olayını dinle
         binding.BTNLAMP.setOnClickListener {
+            // ViewModel üzerinden lamba isteği gönder
             viewModel.sendLampRequest()
-            Toast.makeText(this, "$", Toast.LENGTH_SHORT).show()
 
+            Toast.makeText(this, "İstek gönderildi", Toast.LENGTH_SHORT).show()
         }
 
-        // ViewModel'dan gelen yanıtı gözlemle
+        // Gelen yanıtı gözlemle
         viewModel.response.observe(this) { response ->
-            // Yanıtı logla ve kontrol et
-            Toast.makeText(this, "$response", Toast.LENGTH_SHORT).show()
 
+            Log.d("LampActivity", "Gelen yanıt: $response")
 
-            val intent = Intent(this, LampActivity::class.java)
-            startActivity(intent)
-            finish() // Eğer mevcut aktiviteyi kapatmak istiyorsanız
+            Toast.makeText(this, "Yanıt: $response", Toast.LENGTH_SHORT).show()
         }
 
+        // Hataları gözlemle
         viewModel.error.observe(this) { error ->
-            // Hata mesajını logla ve göster
+            // Hata mesajını logla
+            Log.e("LampActivity", "Hata: $error")
 
-            Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
+            // Kullanıcıya hata mesajı göster
+            Toast.makeText(this, "Hata: $error", Toast.LENGTH_SHORT).show()
         }
     }
 }
