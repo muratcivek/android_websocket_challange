@@ -42,4 +42,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
 }
 
-![Image](https://github.com/user-attachments/assets/4976eb89-0772-4fd0-a8bf-6cf596e2963b)
+![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/1.png))
+![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/2.png))
+![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/3.png))
