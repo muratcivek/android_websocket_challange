@@ -19,6 +19,10 @@ Bu uygulama **Kotlin** ile geliştirilmiştir. WebSocket üzerinden veri iletiş
 - Kotlin
 - WebSocket kütüphanesi 
 
+![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/1.png))
+![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/2.png))
+![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/3.png))
+
 ### Bağımlılıklar
 ```gradle
 
@@ -42,6 +46,4 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
 }
 
-![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/1.png))
-![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/2.png))
-![Proje Görseli]([https://i.imgur.com/example.png](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/3.png))
+
