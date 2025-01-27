@@ -20,7 +20,9 @@ Bu uygulama **Kotlin** ile geliştirilmiştir. WebSocket üzerinden veri iletiş
 - WebSocket kütüphanesi 
 
 ![Proje Görseli](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/1.png)
+
 ![Proje Görseli](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/2.png)
+
 ![Proje Görseli](https://github.com/muratcivek/android_websocket_challange/blob/master/gorseller/3.png)
 
 ### Bağımlılıklar
